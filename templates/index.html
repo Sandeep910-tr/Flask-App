@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+<button onclick="load('posts')">Posts</button>
+<button onclick="load('comments')">Comments</button>
+<button onclick="load('albums')">Albums</button>
+
+<pre id="out"></pre>
+
+<script>
+function load(type){
+  fetch('/' + type)
+  .then(res => res.json())
+  .then(data => document.getElementById('out').textContent =
+        JSON.stringify(data.slice(0,5), null, 2));
+}
+</script>
+</body>
+</html>
